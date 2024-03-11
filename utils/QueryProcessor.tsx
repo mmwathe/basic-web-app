@@ -7,5 +7,14 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes("andrew id")) {
+    return (
+      "What is an Andrew ID? An Andrew ID is a unique identifier for " +
+      "students, faculty, and staff at Carnegie Mellon University. It is " +
+      "used to access a variety of university services, including email, " +
+      "Wi-Fi, and library resources."
+    );
+  }
+
   return "";
 }
