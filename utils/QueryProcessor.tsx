@@ -112,6 +112,20 @@ export default function QueryProcessor(query: string): string {
     return (num_list[0] - num_list[1]).toString();
   }
 
+  if (query.toLowerCase().includes("power")) {
+    const numbers = query.match(/\d+/g);
+    const num_list = numbers?.map((number) => parseInt(number));
+    if (num_list === undefined) {
+      return "The array is undefined";
+    }
+
+    if (num_list.length === 0) {
+      return "The array is empty";
+    }
+
+    return (num_list[0] ** num_list[1]).toString();
+  }
+
   function isPrime(number: number) {
     // Check if the number is less than 2, as numbers less than 2 are not prime
     if (number < 2) {
