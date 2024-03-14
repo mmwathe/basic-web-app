@@ -34,5 +34,21 @@ export default function QueryProcessor(query: string): string {
     return (Math.max(...num_list).toString());
   }
 
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g);
+    const num_list = numbers?.map((number) => parseInt(number));
+    if (num_list === undefined) {
+      return "The array is undefined";
+    }
+  
+  if (num_list.length === 0) {
+      return "The array is empty";
+    }
+  
+    return (num_list.reduce((accumulator, currentValue) => accumulator + currentValue, 0).toString());
+  }
+  
   return "";
 }
+
+
