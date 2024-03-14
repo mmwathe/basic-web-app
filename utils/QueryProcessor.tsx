@@ -84,5 +84,19 @@ export default function QueryProcessor(query: string): string {
       .toString();
   }
 
+  if (query.toLowerCase().includes("multiplied")) {
+    const numbers = query.match(/\d+/g);
+    const num_list = numbers?.map((number) => parseInt(number));
+    if (num_list === undefined) {
+      return "The array is undefined";
+    }
+
+    if (num_list.length === 0) {
+      return "The array is empty";
+    }
+
+    return ((num_list[0]*num_list[1]).toString());
+  }
+
   return "";
 }
