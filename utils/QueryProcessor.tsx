@@ -17,21 +17,25 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("name")) {
-    return ("myles");
+    return "myles";
   }
 
-  if (query.toLowerCase().includes("which of the following numbers is the largest")) {
+  if (
+    query
+      .toLowerCase()
+      .includes("which of the following numbers is the largest")
+  ) {
     const numbers = query.match(/\d+/g);
     const num_list = numbers?.map((number) => parseInt(number));
     if (num_list === undefined) {
       return "The array is undefined";
     }
 
-  if (num_list.length === 0) {
+    if (num_list.length === 0) {
       return "The array is empty";
     }
 
-    return (Math.max(...num_list).toString());
+    return Math.max(...num_list).toString();
   }
 
   if (query.toLowerCase().includes("plus")) {
@@ -40,15 +44,45 @@ export default function QueryProcessor(query: string): string {
     if (num_list === undefined) {
       return "The array is undefined";
     }
-  
-  if (num_list.length === 0) {
+
+    if (num_list.length === 0) {
       return "The array is empty";
     }
-  
-    return (num_list.reduce((accumulator, currentValue) => accumulator + currentValue, 0).toString());
+
+    return num_list
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+      .toString();
   }
-  
+
+  if (query.toLowerCase().includes("square and a cube")) {
+    const numbers = query.match(/\d+/g);
+    const num_list = numbers?.map((number) => parseInt(number));
+    if (num_list === undefined) {
+      return "The array is undefined";
+    }
+
+    if (num_list.length === 0) {
+      return "The array is empty";
+    }
+
+    for (let i = 0; i < num_list.length; i++) {
+      let num = num_list[i];
+      const squareRoot = Math.sqrt(num);
+      const isSquare = Number.isInteger(squareRoot);
+
+      // Check if the cube root is an integer
+      const cubeRoot = Math.cbrt(num);
+      const isCube = Number.isInteger(cubeRoot);
+
+      if (isSquare && isCube) {
+        return (num.toString());
+      }
+    }
+
+    return num_list
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+      .toString();
+  }
+
   return "";
 }
-
-
