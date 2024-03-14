@@ -28,4 +28,10 @@ describe("QueryProcessor", () => {
             "Wi-Fi, and library resources."
           ));
     });
+
+    test('should return name description', () => {
+        const query = "What is your name";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe(("myles"));
+    });
 });
